@@ -19,12 +19,12 @@ export const metadata: Metadata = {
     template: "%s | Sandbox AI",
   },
   description:
-    "SaaS de simulation d'API pour agents IA : testez Stripe, e-commerce et webhooks sans toucher à la production. Réponses réalistes, logs en temps réel, zéro risque.",
+    "SaaS de sandbox API pour agents IA : testez Stripe, paiements crypto (USDC), webhooks et scénarios d'échec (500, timeouts, rate limit) sans jamais toucher à la production. Logs en temps réel, quotas maîtrisés, intégration rapide.",
   openGraph: {
     type: "website",
     title: "Sandbox AI — Simulateur d'API pour agents IA",
     description:
-      "SaaS de simulation d'API pour agents IA : testez Stripe, e-commerce et webhooks sans toucher à la production. Réponses réalistes, logs en temps réel, zéro risque.",
+      "Sandbox API pour agents IA : Stripe, paiements crypto, webhooks et scénarios d'échec, le tout hors production pour tester vos intégrations en sécurité.",
     siteName: "Sandbox AI",
   },
 };
@@ -40,6 +40,11 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
+          <script
+            defer
+            data-domain="mon-saas-ia.vercel.app"
+            src="https://plausible.io/js/script.js"
+          />
           {children}
         </body>
       </html>

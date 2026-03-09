@@ -14,19 +14,19 @@ type LogEntry = {
 
 const features = [
   {
-    title: "Zéro risque en production",
+    title: "Protégez votre production",
     description:
-      "Testez vos agents IA contre des API factices. Aucun appel réel, aucune donnée sensible exposée. Idéal pour le CI/CD et les environnements de staging.",
+      "Laissez vos agents IA frapper une sandbox plutôt que vos vraies APIs. Pas de données sensibles, pas de paiements réels, idéal pour le dev et le staging.",
   },
   {
-    title: "Logs en temps réel",
+    title: "Comprenez ce que fait l’agent",
     description:
-      "Suivez chaque requête simulée dans une console type terminal. Heure, agent, action et statut HTTP en un coup d'œil pour débugger rapidement.",
+      "Chaque appel est loggé : heure, agent, endpoint, statut. Vous voyez exactement comment l’agent consomme vos APIs et où il échoue.",
   },
   {
-    title: "Chaos Engineering",
+    title: "Scénarios d’échec sur-mesure",
     description:
-      "Simulez pannes et erreurs (401, 500, timeouts) pour durcir vos prompts et rendre vos agents résilients avant la mise en production.",
+      "Injectez des 500, des timeouts, du rate limiting ou une carte refusée. Durcissez vos prompts et vos flux avant d’ouvrir la porte à la prod.",
   },
 ];
 
@@ -35,10 +35,10 @@ const pricingPlans = [
     name: "Sandbox",
     price: "0",
     period: "/mois",
-    subtitle: "Pour valider l'intégration.",
+    subtitle: "Pour valider vos intégrations agents IA.",
     features: [
       "500 requêtes/mois",
-      "1 API simulée (Stripe)",
+      "Stripe sandbox prête à l’emploi",
       "24h de rétention des logs",
     ],
     cta: "Commencer gratuitement",
@@ -52,8 +52,8 @@ const pricingPlans = [
     subtitle: "Pour les startups et ingénieurs IA.",
     features: [
       "50 000 requêtes/mois",
-      "Toutes les APIs simulées",
-      "Bouton Chaos activé (résilience)",
+      "Stripe + Crypto (USDC) + webhooks",
+      "Scénarios d’erreur avancés (500, 402, 429, latence)",
       "30 jours de logs",
     ],
     cta: "Démarrer l'essai Pro",
@@ -66,9 +66,9 @@ const pricingPlans = [
     period: "/mois",
     subtitle: "Pour les équipes IA en production.",
     features: [
-      "Requêtes illimitées",
-      "Environnements isolés multiples",
-      "APIs sur-mesure",
+      "Quota adapté à votre volumétrie",
+      "Environnements isolés multiples (preprod, QA, clients)",
+      "APIs sandbox sur-mesure",
       "Support prioritaire Slack",
     ],
     cta: "Contacter les ventes",
