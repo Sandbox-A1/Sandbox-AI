@@ -81,6 +81,15 @@ export default function Home() {
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [isSimulating, setIsSimulating] = useState(false);
 
+  const trackEvent = (eventName: string) => {
+    if (typeof window === "undefined") return;
+    const plausible = (window as any).plausible as
+      | ((event: string) => void)
+      | undefined;
+    if (!plausible) return;
+    plausible(eventName);
+  };
+
   const handleSimulateAgent = async () => {
     if (isSimulating) return;
     setIsSimulating(true);
@@ -180,7 +189,14 @@ export default function Home() {
                 </li>
               </ul>
               <div className="mt-10 flex flex-wrap items-center gap-3">
-                <a href="#demo" className="inline-flex items-center justify-center rounded-md bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-indigo-500 focus-visible:outline focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A]" aria-label="Voir la démo">Voir la démo</a>
+                <a
+                  href="#demo"
+                  onClick={() => trackEvent("hero_voir_demo_click")}
+                  className="inline-flex items-center justify-center rounded-md bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-indigo-500 focus-visible:outline focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A]"
+                  aria-label="Voir la démo"
+                >
+                  Voir la démo
+                </a>
                 <a href="/guide" className="inline-flex items-center justify-center rounded-md border border-slate-600 bg-transparent px-5 py-2.5 text-sm font-medium text-slate-300 transition hover:border-slate-500 hover:bg-white/5 focus-visible:outline focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A]" aria-label="Guide API">Guide API</a>
               </div>
             </div>

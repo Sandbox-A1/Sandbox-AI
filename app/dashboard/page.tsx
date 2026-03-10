@@ -22,6 +22,15 @@ const SCENARIO_LABELS: Record<string, string> = {
   card_declined_402: "💳 Carte Refusée (402)",
 };
 
+function trackEvent(eventName: string, props?: Record<string, unknown>) {
+  if (typeof window === "undefined") return;
+  const plausible = (window as any).plausible as
+    | ((event: string, options?: { props?: Record<string, unknown> }) => void)
+    | undefined;
+  if (!plausible) return;
+  plausible(eventName, props ? { props } : undefined);
+}
+
 function isSuccessStatus(status: string): boolean {
   const normalized = status.toLowerCase();
   return (
@@ -128,6 +137,7 @@ export default function DashboardPage() {
     setIsSimulating(true);
     const scenarioLabel = SCENARIO_LABELS[scenario] ?? scenario;
     setStatus(`⏳ ${scenarioLabel} — simulation en cours...`);
+    trackEvent("demo_stripe_run", { scenario });
     try {
       const response = await fetch("/api/stripe", {
         method: "POST",
@@ -137,13 +147,16 @@ export default function DashboardPage() {
       const data = (await response.json().catch(() => ({}))) as { success?: boolean; error?: string };
       if (response.ok && data.success) {
         setStatus(`${scenarioLabel} — log enregistré ✅`);
+        trackEvent("demo_stripe_success", { scenario });
       } else {
         setStatus(`${scenarioLabel} — ❌ KO : ${data.error || "ÉCHEC"}`);
+        trackEvent("demo_stripe_error", { scenario, error: data.error || "unknown" });
       }
       await fetchLogs();
     } catch {
       const scenarioLabelCatch = SCENARIO_LABELS[scenario] ?? scenario;
       setStatus(`${scenarioLabelCatch} — ❌ KO : ÉCHEC`);
+      trackEvent("demo_stripe_error", { scenario, error: "network" });
       await fetchLogs();
     } finally {
       setIsSimulating(false);
@@ -155,6 +168,7 @@ export default function DashboardPage() {
     setIsSimulating(true);
     const scenarioLabel = SCENARIO_LABELS[scenario] ?? scenario;
     setStatus(`⏳ ${scenarioLabel} — simulation crypto en cours...`);
+    trackEvent("demo_crypto_run", { scenario });
     try {
       const response = await fetch("/api/crypto", {
         method: "POST",
@@ -170,12 +184,15 @@ export default function DashboardPage() {
         setStatus(
           `🪙 SUCCÈS : TX CRYPTO VALIDÉE ! ${data.tx_hash ? `(${data.tx_hash})` : ""}`.trim()
         );
+        trackEvent("demo_crypto_success", { scenario });
       } else {
         setStatus(`🪙 CRYPTO — ❌ KO : ${data.error || "ÉCHEC"}`);
+        trackEvent("demo_crypto_error", { scenario, error: data.error || "unknown" });
       }
       await fetchLogs();
     } catch {
       setStatus("🪙 CRYPTO — ❌ KO : ÉCHEC");
+      trackEvent("demo_crypto_error", { scenario, error: "network" });
       await fetchLogs();
     } finally {
       setIsSimulating(false);
