@@ -469,6 +469,61 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Comment ça marche ? */}
+        <section
+          className="mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-20"
+          aria-labelledby="howitworks-title"
+        >
+          <h2
+            id="howitworks-title"
+            className="mb-4 text-center text-2xl font-bold tracking-tight text-white md:text-3xl"
+          >
+            Comment fonctionne Sandbox AI ?
+          </h2>
+          <p className="mx-auto mb-10 max-w-3xl text-center text-sm text-slate-400 md:text-base">
+            En pratique, Sandbox AI se place entre vos agents IA (LLM, outils no-code, scripts) et vos APIs
+            critiques. Les appels HTTP partent vers un environnement de test dédié, observé et scénarisable,
+            plutôt que vers votre infrastructure de production.
+          </p>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            <article className="rounded-xl border border-white/5 bg-white/[0.02] p-6 text-sm text-slate-300">
+              <h3 className="text-base font-semibold text-white">
+                1. Connectez vos agents à la sandbox API
+              </h3>
+              <p className="mt-3 text-slate-400">
+                Vous remplacez vos URLs d&apos;API réelles par les endpoints de Sandbox AI{" "}
+                (<span className="font-mono">/api/stripe</span>, <span className="font-mono">/api/crypto</span>,
+                webhooks, etc.). Les agents appellent l&apos;environnement de test comme s&apos;il s&apos;agissait
+                de la vraie prod, mais aucun paiement ni donnée sensible n&apos;est touché.
+              </p>
+            </article>
+
+            <article className="rounded-xl border border-white/5 bg-white/[0.02] p-6 text-sm text-slate-300">
+              <h3 className="text-base font-semibold text-white">
+                2. Choisissez vos scénarios de réponse
+              </h3>
+              <p className="mt-3 text-slate-400">
+                Depuis le dashboard ou vos tests CI/CD, vous pilotez le{" "}
+                <span className="font-mono">scenario</span> : succès 200, erreur 500, latence 5s, rate limit 429,
+                carte refusée 402… Cela vous permet de voir comment vos agents réagissent à des APIs lentes,
+                instables ou indisponibles.
+              </p>
+            </article>
+
+            <article className="rounded-xl border border-white/5 bg-white/[0.02] p-6 text-sm text-slate-300">
+              <h3 className="text-base font-semibold text-white">
+                3. Analysez les logs et ajustez vos prompts
+              </h3>
+              <p className="mt-3 text-slate-400">
+                Chaque appel est loggé dans Supabase (heure, agent, action, statut). Vous identifiez les prompts
+                ou workflows qui génèrent trop de requêtes, qui échouent mal ou qui ne gèrent pas les cas limites.
+                Vous durcissez ensuite vos prompts avant d&apos;ouvrir vos vraies APIs en production.
+              </p>
+            </article>
+          </div>
+        </section>
+
         {/* Cas d'usage détaillés */}
         <section
           className="mx-auto max-w-7xl px-4 pb-20 md:px-8 md:pb-28"
