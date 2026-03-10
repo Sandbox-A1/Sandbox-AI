@@ -193,6 +193,10 @@ export default function DashboardPage() {
           <h1 className="text-2xl font-bold tracking-tight text-white md:text-3xl">
             Vue d&apos;ensemble
           </h1>
+          <p className="max-w-md text-sm text-slate-400">
+            Choisissez un scénario, lancez une simulation Stripe ou Crypto, puis
+            inspectez les logs générés par vos agents IA.
+          </p>
           <label className="flex flex-col gap-1 text-sm text-slate-400">
             <span className="font-medium text-slate-200">Scénario</span>
             <select
@@ -207,6 +211,9 @@ export default function DashboardPage() {
               <option value="rate_limit_429">🚦 Rate Limit (429)</option>
               <option value="card_declined_402">💳 Carte Refusée (402)</option>
             </select>
+            <span className="text-xs text-slate-500">
+              C&apos;est le comportement que l&apos;API va simuler pour vos appels.
+            </span>
           </label>
         </div>
       </div>
@@ -367,7 +374,8 @@ export default function DashboardPage() {
                         <td className="px-4 py-6 text-slate-500">—</td>
                         <td className="px-4 py-6 text-slate-500">—</td>
                         <td className="px-4 py-6 text-slate-500">
-                          Aucune activité récente
+                          Aucune activité récente — lancez une simulation
+                          ci-dessus pour générer vos premiers logs.
                         </td>
                         <td className="px-4 py-6">
                           <span className="rounded border border-white/10 bg-white/5 px-2 py-0.5 text-slate-500">

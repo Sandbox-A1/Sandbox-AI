@@ -77,6 +77,44 @@ export default function GuidePage() {
             </ul>
           </section>
 
+          <section aria-labelledby="tutorial-title">
+            <h2 id="tutorial-title" className="mb-4 text-xl font-bold text-white">
+              Tutoriel rapide (5 étapes)
+            </h2>
+            <ol className="list-inside list-decimal space-y-3 text-sm text-slate-400">
+              <li>
+                <span className="font-medium text-slate-200">Créer un compte et une clé API.</span>{" "}
+                Connectez-vous à Sandbox AI puis allez dans{" "}
+                <Link href="/dashboard/keys" className="text-indigo-400 underline hover:no-underline">
+                  Dashboard &gt; Clés API
+                </Link>{" "}
+                pour générer votre première clé.
+              </li>
+              <li>
+                <span className="font-medium text-slate-200">Choisir un scénario.</span>{" "}
+                Dans le dashboard, utilisez le sélecteur <span className="font-mono">Scénario</span> pour décider
+                si l&apos;API doit répondre en succès, erreur 500, latence, rate limit, etc.
+              </li>
+              <li>
+                <span className="font-medium text-slate-200">Lancer une simulation Stripe ou Crypto.</span>{" "}
+                Cliquez sur <span className="font-mono">Simuler un paiement</span> (Stripe) ou{" "}
+                <span className="font-mono">Simuler Paiement Crypto (USDC)</span>. Le statut au-dessus des boutons
+                vous indique immédiatement le résultat.
+              </li>
+              <li>
+                <span className="font-medium text-slate-200">Brancher votre agent ou script.</span>{" "}
+                Reprenez les exemples cURL Stripe / Crypto ci-dessous pour appeler la sandbox depuis un agent IA,
+                un test end-to-end ou un script serveur.
+              </li>
+              <li>
+                <span className="font-medium text-slate-200">Analyser les logs.</span>{" "}
+                Consultez la section <span className="font-mono">Activité récente</span> du dashboard ou appelez{" "}
+                <span className="font-mono">GET /api/logs</span> pour voir comment votre agent se comporte selon les
+                scénarios choisis et ajuster vos prompts en conséquence.
+              </li>
+            </ol>
+          </section>
+
           <section aria-labelledby="base-url-title">
             <h2 id="base-url-title" className="mb-4 flex items-center gap-2 text-xl font-bold text-white">
               <Code className="h-5 w-5 text-indigo-400" aria-hidden />

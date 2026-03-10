@@ -85,6 +85,25 @@ Ouvrez [http://localhost:3000](http://localhost:3000).
 - **Vercel** : connectez le repo, ajoutez les variables d’env, déployez.
 - Définir `NEXT_PUBLIC_APP_URL` sur l’URL de production pour le sitemap et Stripe.
 
+## Utilisation rapide (côté produit)
+
+1. **Se connecter**  
+   - Rendez-vous sur l’URL de production, créez un compte via Clerk.
+
+2. **Créer une clé API**  
+   - Dans le dashboard, ouvrez `Clés API` et générez une clé pour vos appels d’agent / scripts.
+
+3. **Choisir un scénario**  
+   - Dans la vue d’ensemble, utilisez le select `Scénario` pour choisir le comportement de l’API : succès, erreur 500, latence 5s, rate limit 429, carte refusée, etc.
+
+4. **Simuler un paiement Stripe ou Crypto**  
+   - Cliquez sur `Simuler un paiement` (Stripe) ou `Simuler Paiement Crypto (USDC)`.  
+   - Le statut et la table de logs se mettent à jour pour refléter le scénario choisi.
+
+5. **Brancher votre agent IA**  
+   - Depuis votre agent ou un script, appelez `POST /api/stripe` ou `POST /api/crypto` avec la clé API et le champ `scenario`.  
+   - Utilisez `GET /api/logs` pour analyser le comportement de l’agent et ajuster vos prompts avant la mise en production.
+
 ---
 
 Sandbox AI · Simulateur d’API pour agents IA
