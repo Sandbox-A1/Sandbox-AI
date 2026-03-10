@@ -452,6 +452,75 @@ export default function Home() {
             ))}
           </div>
         </section>
+
+        {/* Cas d'usage détaillés */}
+        <section
+          className="mx-auto max-w-7xl px-4 pb-20 md:px-8 md:pb-28"
+          aria-labelledby="usecases-title"
+        >
+          <h2
+            id="usecases-title"
+            className="mb-4 text-center text-2xl font-bold tracking-tight text-white md:text-3xl"
+          >
+            Cas d&apos;usage : quand utiliser Sandbox AI ?
+          </h2>
+          <p className="mx-auto mb-10 max-w-3xl text-center text-sm text-slate-400 md:text-base">
+            Sandbox AI est utile dès que vous avez des agents IA (LLM, copilotes, workflows automatisés)
+            qui doivent parler à des APIs critiques (paiement, données clients, back-office). Voici
+            quelques situations concrètes où la sandbox évite des sueurs froides.
+          </p>
+
+          <div className="grid gap-6 md:grid-cols-2">
+            <article className="rounded-xl border border-white/5 bg-white/[0.02] p-6 text-sm text-slate-300">
+              <h3 className="text-base font-semibold text-white">
+                1. Tester un agent de paiement (Stripe, e-commerce, SaaS)
+              </h3>
+              <p className="mt-3 text-slate-400">
+                Vous construisez un agent IA qui crée des factures, déclenche des abonnements ou initie des
+                paiements Stripe. Au lieu de le brancher directement sur votre compte Stripe live ou même test,
+                vous envoyez ses appels HTTP vers <span className="font-mono">/api/stripe</span> de Sandbox AI.
+                Vous pouvez alors simuler des succès, des 500, des cartes refusées (402) ou du rate limiting (429)
+                sans jamais toucher un vrai moyen de paiement.
+              </p>
+            </article>
+
+            <article className="rounded-xl border border-white/5 bg-white/[0.02] p-6 text-sm text-slate-300">
+              <h3 className="text-base font-semibold text-white">
+                2. Auditer le comportement d&apos;un agent &quot;boîte noire&quot;
+              </h3>
+              <p className="mt-3 text-slate-400">
+                Vous utilisez un agent LLM géré par un provider (copilot, agent externe, orchestrateur no-code)
+                et vous n&apos;êtes pas sûr de la façon dont il consomme vos APIs. En le branchant d&apos;abord
+                sur la sandbox, chaque requête est loggée (heure, endpoint, statut, scénario) et vous voyez
+                exactement quels endpoints sont appelés, à quelle fréquence et avec quels résultats.
+              </p>
+            </article>
+
+            <article className="rounded-xl border border-white/5 bg-white/[0.02] p-6 text-sm text-slate-300">
+              <h3 className="text-base font-semibold text-white">
+                3. Mettre en place une suite de tests CI/CD pour vos agents IA
+              </h3>
+              <p className="mt-3 text-slate-400">
+                Vos prompts et vos agents évoluent régulièrement. Avec Sandbox AI, vous pouvez écrire des tests
+                end-to-end qui tirent sur des endpoints factices en choisissant le <span className="font-mono">
+                scenario</span> à utiliser (succès, erreur, latence). Vous validez ainsi que l&apos;agent gère
+                bien les erreurs avant de déployer une nouvelle version en production.
+              </p>
+            </article>
+
+            <article className="rounded-xl border border-white/5 bg-white/[0.02] p-6 text-sm text-slate-300">
+              <h3 className="text-base font-semibold text-white">
+                4. Expérimenter sur des APIs sensibles (KYC, données clients, back-office)
+              </h3>
+              <p className="mt-3 text-slate-400">
+                Pour des services critiques (KYC, support, back-office interne), vous ne voulez pas que
+                un agent en dev puisse créer, modifier ou supprimer des ressources réelles. En dupliquant
+                quelques endpoints dans Sandbox AI, vous laissez vos équipes IA expérimenter librement tout
+                en gardant votre infrastructure de production intouchée.
+              </p>
+            </article>
+          </div>
+        </section>
       </main>
 
       <footer className="border-t border-white/5 py-8">
