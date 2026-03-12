@@ -592,6 +592,52 @@ export default function Home() {
             </article>
           </div>
         </section>
+
+        {/* FAQ rapide */}
+        <section
+          className="mx-auto max-w-7xl px-4 pb-20 md:px-8 md:pb-28"
+          aria-labelledby="faq-title"
+        >
+          <h2
+            id="faq-title"
+            className="mb-4 text-center text-2xl font-bold tracking-tight text-white md:text-3xl"
+          >
+            FAQ — Questions fréquentes
+          </h2>
+          <div className="mx-auto max-w-3xl space-y-6 text-sm text-slate-300">
+            <div>
+              <h3 className="font-semibold text-white">
+                Est-ce que Sandbox AI touche à ma vraie Stripe ou à mes vraies APIs ?
+              </h3>
+              <p className="mt-2 text-slate-400">
+                Non. Les endpoints exposés par Sandbox AI sont des APIs factices (sandbox API). Les appels
+                restent dans l&apos;environnement de test : aucun paiement réel, aucun appel sortant vers vos
+                services internes ou vos comptes Stripe/crypto de production.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-white">
+                En quoi c&apos;est différent de la sandbox Stripe officielle ?
+              </h3>
+              <p className="mt-2 text-slate-400">
+                La sandbox Stripe est parfaite pour tester votre application, mais vos agents IA sont libres de
+                faire n&apos;importe quoi dessus. Sandbox AI ajoute une couche d&apos;observabilité (logs centraux)
+                et de scénarisation (500, latence, 402, 429) pensée spécifiquement pour les agents IA et les
+                tests de prompts.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-white">
+                Est-ce que je peux l&apos;utiliser sans agents IA, juste pour tester mes intégrations API ?
+              </h3>
+              <p className="mt-2 text-slate-400">
+                Oui. Vous pouvez l&apos;utiliser comme une sandbox HTTP classique pour tester vos intégrations
+                Stripe/Crypto et valider vos flux métier dans un environnement de test isolé. La valeur est
+                simplement encore plus forte quand vous avez des agents autonomes qui consomment vos APIs.
+              </p>
+            </div>
+          </div>
+        </section>
       </main>
 
       <footer className="border-t border-white/5 py-8">
